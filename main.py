@@ -2,30 +2,21 @@ import framework_class
 
 if __name__ == "__main__":
     
-        result = framework_class.TestResult()
+    result = framework_class.TestResult()
+    suite = framework_class.TestSuite()
 
-        test = framework_class.TestCaseTest('test_result_success_run')
-        test.run(result)
+    suite.add_test(framework_class.TestCaseTest('test_result_success_run'))
+    suite.add_test(framework_class.TestCaseTest('test_result_failure_run'))
+    suite.add_test(framework_class.TestCaseTest('test_result_error_run'))
+    suite.add_test(framework_class.TestCaseTest('test_result_multiple_run'))
+    suite.add_test(framework_class.TestCaseTest('test_was_set_up'))
+    suite.add_test(framework_class.TestCaseTest('test_was_run'))
+    suite.add_test(framework_class.TestCaseTest('test_was_tear_down'))
+    suite.add_test(framework_class.TestCaseTest('test_template_method'))
 
-        test = framework_class.TestCaseTest('test_result_failure_run')
-        test.run(result)
+    suite.add_test(framework_class.TestSuiteTest('test_suite_size'))
+    suite.add_test(framework_class.TestSuiteTest('test_suite_success_run'))
+    suite.add_test(framework_class.TestSuiteTest('test_suite_multiple_run'))
 
-        test = framework_class.TestCaseTest('test_result_error_run')
-        test.run(result)
-
-        test = framework_class.TestCaseTest('test_result_multiple_run')
-        test.run(result)
-
-        test = framework_class.TestCaseTest('test_was_set_up')
-        test.run(result)
-
-        test = framework_class.TestCaseTest('test_was_run')
-        test.run(result)
-
-        test = framework_class.TestCaseTest('test_was_tear_down')
-        test.run(result)
-
-        test = framework_class.TestCaseTest('test_template_method')
-        test.run(result)
-
-        print(result.summary())
+    suite.run(result)
+    print(result.summary())
