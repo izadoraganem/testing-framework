@@ -188,7 +188,18 @@ class TestLoader:
             test_method = test_case_class(test_method_name)
             suite.add_test(test_method)
         return suite
-    
+
+
+class TestRunner:
+
+    def __init__(self):
+        self.result = TestResult()
+
+    def run(self, test):
+        test.run(self.result)
+        print(self.result.summary())
+        return self.result
+
 
 class TestLoaderTest(TestCase):
 
@@ -222,6 +233,8 @@ class TestLoaderTest(TestCase):
         loader = TestLoader()
         names = loader.get_test_case_names(Test)
         assert names == []
+
+
 
 class MyTest(TestCase):
 
