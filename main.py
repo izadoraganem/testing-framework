@@ -3,20 +3,7 @@ import framework_class
 if __name__ == "__main__":
     
     result = framework_class.TestResult()
-    suite = framework_class.TestSuite()
-
-    suite.add_test(framework_class.TestCaseTest('test_result_success_run'))
-    suite.add_test(framework_class.TestCaseTest('test_result_failure_run'))
-    suite.add_test(framework_class.TestCaseTest('test_result_error_run'))
-    suite.add_test(framework_class.TestCaseTest('test_result_multiple_run'))
-    suite.add_test(framework_class.TestCaseTest('test_was_set_up'))
-    suite.add_test(framework_class.TestCaseTest('test_was_run'))
-    suite.add_test(framework_class.TestCaseTest('test_was_tear_down'))
-    suite.add_test(framework_class.TestCaseTest('test_template_method'))
-
-    suite.add_test(framework_class.TestSuiteTest('test_suite_size'))
-    suite.add_test(framework_class.TestSuiteTest('test_suite_success_run'))
-    suite.add_test(framework_class.TestSuiteTest('test_suite_multiple_run'))
-
+    loader = framework_class.TestLoader()
+    suite = loader.make_suite(framework_class.TestLoaderTest)
     suite.run(result)
     print(result.summary())
